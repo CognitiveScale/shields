@@ -1,10 +1,10 @@
 'use strict'
 
-const Joi = require('@hapi/joi')
-const {renderCertifaiBadge } = require('./certifai-helpers')
+//const Joi = require('@hapi/joi')
+const { renderCertifaiAtxBadge } = require('./certifai-helpers')
 const { BaseSvgScrapingService } = require('..')
 
-const schema = Joi.array().items(Joi.object())
+//const schema = Joi.array().items(Joi.object())
 
 module.exports = class CertifaiAtx extends BaseSvgScrapingService {
   static get category() {
@@ -24,7 +24,7 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
         title: 'Certifai AI Trust Index Score',
         pattern: ':projectId',
         namedParams: { projectId: 'e27821fb6289410b8f58338c7e0bc686' },
-        staticPreview: this.render({ certifaiScore: '601' }),
+        staticPreview: this.render({ certifaiScore: '650' }),
       },
       {
         title: 'Certifai AI Trust Index Branch Score',
@@ -33,7 +33,7 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
           projectId: 'e27821fb6289410b8f58338c7e0bc686',
           branch: 'master',
         },
-        staticPreview: this.render({ certifaiScore: '701' }),
+        staticPreview: this.render({ certifaiScore: '650' }),
       },
     ]
   }
@@ -44,8 +44,8 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
     }
   }
 
-  static render({ certifaiScore}) {
-    return renderCertifaiBadge ({certifaiScore})
+  static render({ certifaiScore }) {
+    return renderCertifaiAtxBadge({ certifaiScore })
   }
 
   async handle({ projectId, branch }) {
@@ -60,6 +60,6 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
       valueMatcher: /visibility="hidden">([^<>]+)<\/text>/,
     })
     */
-    return this.constructor.render({ certifaiScore : '650'})
+    return this.constructor.render({ certifaiScore: '650' })
   }
 }

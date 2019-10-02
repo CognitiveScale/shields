@@ -4,7 +4,7 @@ const Joi = require('@hapi/joi')
 const { metric } = require('../text-formatters')
 const certifaiGrade = Joi.equal('A', 'B', 'C', 'D', 'E', 'F')
 
-function certifaiColor(certifaiScore) {
+function certifaiAtxColor(certifaiScore) {
   if (certifaiScore > 700) {
     return 'brightgreen'
   } else if (certifaiScore > 600) {
@@ -14,7 +14,25 @@ function certifaiColor(certifaiScore) {
   }
 }
 
-function renderCertifaiBadge({ label, certifaiScore }) {
+function certifaiColor(certifaiScore) {
+  if (certifaiScore > 75) {
+    return 'brightgreen'
+  } else if (certifaiScore > 50) {
+    return 'yellow'
+  } else {
+    return 'red'
+  }
+}
+
+function renderCertifaiAtxBadge({ label, certifaiScore }) {
+  return {
+    label,
+    message: metric(certifaiScore),
+    color: certifaiAtxColor(certifaiScore),
+  }
+}
+
+function renderCertifaiFeatureBadge({ label, certifaiScore }) {
   return {
     label,
     message: metric(certifaiScore),
@@ -22,4 +40,9 @@ function renderCertifaiBadge({ label, certifaiScore }) {
   }
 }
 
-module.exports = { certifaiGrade, certifaiColor, renderCertifaiBadge}
+module.exports = {
+  certifaiGrade,
+  certifaiColor,
+  renderCertifaiFeatureBadge,
+  renderCertifaiAtxBadge,
+}
