@@ -5,9 +5,9 @@ const { metric } = require('../text-formatters')
 const certifaiGrade = Joi.equal('A', 'B', 'C', 'D', 'E', 'F')
 
 function certifaiAtxColor(certifaiScore) {
-  if (certifaiScore > 700) {
+  if (certifaiScore > 75) {
     return 'brightgreen'
-  } else if (certifaiScore > 600) {
+  } else if (certifaiScore > 50) {
     return 'yellow'
   } else {
     return 'red'
