@@ -49,17 +49,18 @@ module.exports = class CertifaiExplaniability extends BaseSvgScrapingService {
   }
 
   async handle({ projectId, branch }) {
-    /*
-    const { message: certifaiScore } = await this._requestSvg({
-      schema,
-      url: `https://api.certifai.ai/project/badge/robustness/${encodeURIComponent(
-        projectId
-      )}`,
+    const url = `https://storage.googleapis.com/reports_certifai_innovation-lab-sandbox/certifai-scan-${encodeURIComponent(
+      projectId
+    )}-explainability.json`
+    const { res } = await this._request({
+      url,
       options: { qs: { branch } },
       errorMessages: { 404: 'project or branch not found' },
-      valueMatcher: /visibility="hidden">([^<>]+)<\/text>/,
     })
-    */
-    return this.constructor.render({ certifaiScore: '77' })
+
+    const { explainability } = JSON.parse(res.body)
+    return this.constructor.render({
+      certifaiScore: explainability.score.toFixed(2),
+    })
   }
 }

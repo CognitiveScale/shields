@@ -59,6 +59,6 @@ module.exports = class CertifaiFairness extends BaseSvgScrapingService {
     })
 
     const { fairness } = JSON.parse(res.body)
-    return this.constructor.render({ certifaiScore: fairness.score })
+    return this.constructor.render({ certifaiScore: fairness.score.toFixed(2) })
   }
 }

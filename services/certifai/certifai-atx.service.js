@@ -60,6 +60,6 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
 
     const { atx } = JSON.parse(res.body)
 
-    return this.constructor.render({ certifaiScore: atx })
+    return this.constructor.render({ certifaiScore: atx.toFixed(2) })
   }
 }

@@ -59,6 +59,8 @@ module.exports = class CertifaiRobustness extends BaseSvgScrapingService {
     })
 
     const { robustness } = JSON.parse(res.body)
-    return this.constructor.render({ certifaiScore: robustness.score })
+    return this.constructor.render({
+      certifaiScore: robustness.score.toFixed(2),
+    })
   }
 }
