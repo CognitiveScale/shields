@@ -24,7 +24,7 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
         title: 'Certifai AI Trust Index Score',
         pattern: ':projectId',
         namedParams: { projectId: 'e27821fb6289410b8f58338c7e0bc686' },
-        staticPreview: this.render({ certifaiScore: '650' }),
+        staticPreview: this.render({ certifaiScore: '65' }),
       },
       {
         title: 'Certifai AI Trust Index Branch Score',
@@ -33,7 +33,7 @@ module.exports = class CertifaiAtx extends BaseSvgScrapingService {
           projectId: 'e27821fb6289410b8f58338c7e0bc686',
           branch: 'master',
         },
-        staticPreview: this.render({ certifaiScore: '650' }),
+        staticPreview: this.render({ certifaiScore: '65' }),
       },
     ]
   }
